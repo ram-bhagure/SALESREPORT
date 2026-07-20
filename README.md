@@ -1,4 +1,4 @@
-# Distributor Scorecard Generator
+# Distributor Sales Report Generator
 
 ## Overview
 
