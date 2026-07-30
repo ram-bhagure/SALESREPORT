@@ -577,12 +577,14 @@
 
         </section>
         <!-- ==========================
-            CHART SECTION
-        =========================== -->
+            DASHBOARD SECTION
+        ========================== -->
 
-        <section class="chart-section">
+        <section class="dashboard-section">
 
-            <div class="chart-card">
+            <!-- Monthly Trend -->
+
+            <div class="dashboard-card">
 
                 <h3>Monthly Sales Trend</h3>
 
@@ -590,11 +592,13 @@
 
             </div>
 
-            <div class="chart-card">
+            <!-- Quarter Comparison -->
 
-                <h3>Quarter Achievement</h3>
+            <div class="dashboard-card">
 
-                <canvas id="quarterChart"></canvas>
+                <h3>Quarter Target vs Sales</h3>
+
+                <canvas id="quarterComparison"></canvas>
 
             </div>
 
@@ -664,7 +668,187 @@
         ========================== -->
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
 
+    const ctx = document.getElementById('monthlyTrend');
+
+    new Chart(ctx, {
+
+        type: 'line',
+
+        data: {
+
+            labels: [
+                'Apr','May','Jun',
+                'Jul','Aug','Sep',
+                'Oct','Nov','Dec',
+                'Jan','Feb','Mar'
+            ],
+
+            datasets: [{
+
+                label: 'Monthly Sales',
+
+                data: [
+                    210,
+                    235,
+                    250,
+                    245,
+                    270,
+                    290,
+                    310,
+                    300,
+                    325,
+                    340,
+                    360,
+                    390
+                ],
+
+                borderColor: '#1f4e79',
+
+                backgroundColor: 'rgba(31,78,121,0.15)',
+
+                borderWidth: 3,
+
+                fill: true,
+
+                tension: 0.35,
+
+                pointRadius: 4,
+
+                pointHoverRadius: 6
+
+            }]
+
+        },
+
+        options: {
+
+            responsive:true,
+
+            maintainAspectRatio:false,
+
+            plugins:{
+
+                legend:{
+                    display:false
+                }
+
+            },
+
+            scales:{
+
+                y:{
+
+                    beginAtZero:false,
+
+                    grid:{
+                        color:'#e5e5e5'
+                    }
+
+                },
+
+                x:{
+
+                    grid:{
+                        display:false
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+    </script>
+    <script>
+
+    const quarterCtx = document.getElementById('quarterComparison');
+
+    new Chart(quarterCtx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+
+            datasets: [
+
+                {
+
+                    label: 'Target',
+
+                    data: [790, 810, 850, 700],
+
+                    backgroundColor: '#1f4e79'
+
+                },
+
+                {
+
+                    label: 'Sales',
+
+                    data: [725, 760, 830, 690],
+
+                    backgroundColor: '#6fa8dc'
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    position: 'bottom'
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    grid: {
+
+                        color: '#e5e5e5'
+
+                    }
+
+                },
+
+                x: {
+
+                    grid: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+    </script>
 </body>
 
 </html>

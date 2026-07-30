@@ -433,23 +433,23 @@ body {
     gap:20px;
 
 }
-/* ==========================
-   CHART SECTION
-========================== */
+/* ===================================
+   DASHBOARD SECTION
+=================================== */
 
-.chart-section{
+.dashboard-section{
 
-    display:flex;
+    display:grid;
 
-    gap:20px;
+    grid-template-columns:2fr 1fr;
 
-    margin-top:18px;
+    gap:15px;
+
+    margin-top:15px;
 
 }
 
-.chart-card{
-
-    flex:1;
+.dashboard-card{
 
     background:#ffffff;
 
@@ -457,13 +457,13 @@ body {
 
     border-radius:10px;
 
-    padding:15px;
+    padding:12px;
 
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
 
 }
 
-.chart-card h3{
+.dashboard-card h3{
 
     text-align:center;
 
@@ -471,11 +471,11 @@ body {
 
     margin-bottom:10px;
 
-    font-size:18px;
+    font-size:17px;
 
 }
 
-.chart-card canvas{
+.dashboard-card canvas{
 
     width:100% !important;
 
