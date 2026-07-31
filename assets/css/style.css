@@ -18,7 +18,8 @@ body {
 =========================== */
 
 .report-container {
-    width: 1100px;
+    max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     background-color: white;
     padding: 20px 25px;
@@ -166,6 +167,11 @@ body {
     flex-wrap:wrap;
 
 }
+ /* .scorecards{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
+} */
 
 .month-card{
 
@@ -479,6 +485,256 @@ body {
 
     width:100% !important;
 
-    height:170px !important;
+    height:200px !important;
+
+}
+/* ===================================
+   EXECUTIVE SUMMARY
+=================================== */
+
+.executive-summary{
+
+    margin-top:8px;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:10px;
+
+    background:white;
+
+    padding:10px 15px;
+
+}
+
+.executive-summary h2{
+
+    text-align:center;
+
+    color:#1f4e79;
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+/* Two Columns */
+
+.summary-content{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+/* Left */
+
+.summary-left{
+
+    border-right:1px solid #dcdcdc;
+
+    padding-right:20px;
+
+}
+
+/* KPI Row */
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:6px;
+
+    font-size:12px;
+
+}
+
+/* Right */
+
+.summary-right{
+
+    padding-left:20px;
+
+}
+
+.summary-right ul{
+
+    padding-left:18px;
+
+}
+
+.summary-right li{
+
+    margin-bottom:6px;
+
+    font-size: 12px;
+
+}
+
+/* Recommendation */
+
+.recommendation{
+
+    margin-top:8px;
+
+    padding-top:8px;
+
+    border-top:1px dashed #dcdcdc;
+
+    font-size:12px;
+
+    color:#444;
+
+}
+/* ===================================
+   KPI & INSIGHTS
+=================================== */
+
+.insight-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+    margin-top:18px;
+
+}
+
+.kpi-panel,
+.insight-panel{
+
+    background:#ffffff;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:10px;
+
+    padding:16px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+
+}
+
+.kpi-panel h3,
+.insight-panel h3{
+
+    color:#1f4e79;
+
+    margin-bottom:15px;
+
+    text-align:center;
+
+}
+
+.kpi-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+}
+
+.badge{
+
+    padding:3px 10px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    color:white;
+
+}
+
+.excellent{
+
+    background:#28a745;
+
+}
+
+.good{
+
+    background:#1f4e79;
+
+}
+
+.warning{
+
+    background:#f39c12;
+
+}
+
+.insight-panel ul{
+
+    padding-left:18px;
+
+}
+
+.insight-panel li{
+
+    margin-bottom:12px;
+
+    color:#444;
+
+}
+@page{
+    size:A4 portrait;
+    margin:8mm;
+}
+@media print{
+
+    body{
+        background:white;
+        padding:0;
+        margin:0;
+    
+    }
+
+    .report-container{
+        width:auto;
+        max-width: 100%;
+        margin:0 auto;
+        padding: 18px;
+        box-shadow:none;
+        border:none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+}
+@media print{
+
+    .quarter-section,
+    .annual-performance,
+    .chart-section,
+    .executive-summary,
+    .footer{
+
+        page-break-inside:avoid;
+        break-inside:avoid;
+
+    }
+
+}
+.month-card:hover{
+
+    transform:none;
+
+    box-shadow:none;
 
 }
