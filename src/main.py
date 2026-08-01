@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from excel_reader import load_excel
+from report_data import get_distributor_data
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -7,8 +9,13 @@ FILE_PATH =  BASE_DIR/"data"/"sample_MOU_data.xlsx"
 
 df = load_excel(FILE_PATH)
 
-print(df.head())
+party= get_distributor_data(df, "ABC Traders")
 
-print("\n")
+# print(party["distributor"])
 
-print(df.columns)
+# print(party["city"])
+
+# print(party["annual"])
+
+print(party["months"])
+# print(party["months"]["May"])
