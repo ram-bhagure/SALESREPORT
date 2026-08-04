@@ -12,15 +12,15 @@ MONTH_MAPPING = [
     ("Feb", "February"),
     ("Mar", "March"),
 ]
-def get_distributor_data(df, distributor_name):
 
-    distributor = df[df["Party Name"] == distributor_name]
+QUARTER_MAPPING = [
+    ("1st QT", "Q1"),
+    ("2nd QT", "Q2"),
+    ("3rd QT", "Q3"),
+    ("4th QT", "Q4"),
+]
 
-    if distributor.empty:
-        return None
-
-    row = distributor.iloc[0]
-
+def build_months(row):
     months = {}
 
     for excel_name, display_name in MONTH_MAPPING:
@@ -40,7 +40,40 @@ def get_distributor_data(df, distributor_name):
             "diff": diff,
             "achievement": achievement
         }
+    return months
 
+
+def build_quarters(row):
+    quarters = {}
+    for excel_name, display_name in QUARTER_MAPPING:
+        target = row[f"{excel_name} Target"]
+        sales = row[f"{excel_name} Value"]            
+        diff = row[f"{excel_name} Diff"]
+        achievement = 0
+    
+        if target > 0:
+            achievement = round((sales / target) * 100, 2)
+    
+        quarters[display_name] = {
+            "target": target,
+            "sales": sales,
+            "diff": diff,
+            "achievement": achievement
+        }
+    return quarters
+
+
+def get_distributor_data(df, distributor_name):
+
+    distributor = df[df["Party Name"] == distributor_name]
+
+    if distributor.empty:
+        return None
+
+    row = distributor.iloc[0]
+    months = build_months(row)
+    quarters = build_quarters(row)
+    
 
     report_data = {
 
@@ -61,7 +94,8 @@ def get_distributor_data(df, distributor_name):
             "achievement": row["Total %"]
 
         },
-        "months": months
+        "months": months,
+        "quarters":quarters
     
 
         # "months":{
