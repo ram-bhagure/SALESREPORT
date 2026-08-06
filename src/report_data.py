@@ -20,6 +20,13 @@ QUARTER_MAPPING = [
     ("4th QT", "Q4"),
 ]
 
+QUARTER_MONTH_MAPPING = {
+    "Q1": ["April", "May", "June"],
+    "Q2": ["July", "August", "September"],
+    "Q3": ["October", "November", "December"],
+    "Q4": ["January", "February", "March"]
+}
+
 def build_months(row):
     months = {}
 
@@ -63,6 +70,28 @@ def build_quarters(row):
     return quarters
 
 
+def build_quarter_sections(months, quarters):
+
+    quarter_sections = []
+
+    for quarter_name, month_names in QUARTER_MONTH_MAPPING.items():
+
+        section = {
+            "name": quarter_name,
+            "months": [],
+            "summary": quarters[quarter_name]
+        }
+
+        for month in month_names:
+            month_data = months[month].copy()
+            month_data["name"] = month
+
+            section["months"].append(month_data)
+
+        quarter_sections.append(section)
+
+    return quarter_sections
+
 def get_distributor_data(df, distributor_name):
 
     distributor = df[df["Party Name"] == distributor_name]
@@ -73,6 +102,7 @@ def get_distributor_data(df, distributor_name):
     row = distributor.iloc[0]
     months = build_months(row)
     quarters = build_quarters(row)
+    quarter_sections = build_quarter_sections(months, quarters)
     
 
     report_data = {
@@ -95,7 +125,8 @@ def get_distributor_data(df, distributor_name):
 
         },
         "months": months,
-        "quarters":quarters
+        "quarters":quarters,
+        "quarter_sections": quarter_sections
     
 
         # "months":{

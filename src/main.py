@@ -31,4 +31,5 @@ with open(output_path, "w", encoding="utf-8") as file:
     file.write(html)
 
 print(f"HTML generated successfully: {output_path}")
-# print(party["months"]["May"])
+# print (party["quarters"])
+# print(party["quarter_sections"])
