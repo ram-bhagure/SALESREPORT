@@ -27,6 +27,21 @@ def format_number(value):
 
     return ",".join(parts + [last_three])
 
+
+def format_percentage(value):
+
+    if value is None:
+        return ""
+
+    value = float(value)
+
+    # Remove decimal if it's a whole number
+    if value.is_integer():
+        return f"{int(value)}%"
+
+    return f"{value:.2f}%"
+
+
 def render_template(template_name, data):
 
     template_dir = Path(__file__).resolve().parent.parent / "assets"/ "templates"
@@ -36,6 +51,7 @@ def render_template(template_name, data):
     )
 
     env.filters["format_number"] = format_number
+    env.filters["format_percentage"] = format_percentage
 
     template = env.get_template(template_name)
 

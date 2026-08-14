@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distributor Scorecard</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 
 <body>
@@ -49,8 +49,8 @@
                 </div>
 
                 <div class="detail-item">
-                    <span class="label">Generated</span>
-                    <span class="value">10-Jul-2026</span>
+                    <span class="label">Month</span>
+                    <span class="value">{{report_month}}</span>
                 </div>
 
                 <div class="detail-item">
@@ -60,7 +60,7 @@
 
                 <div class="detail-item">
                     <span class="label">State</span>
-                    <span class="value">Gujarat</span>
+                    <span class="value">Maharashtra</span>
                 </div>
 
             </div>
@@ -180,7 +180,7 @@
 
                             <div class="row">
                                 <span>Achievement</span>
-                                <span>{{quarters.Q1.achievement}}%</span>
+                                <span>{{quarters.Q1.achievement}} %</span>
                             </div>
 
                         </div>
@@ -619,23 +619,22 @@
                 <div class="summary-left">
 
                     <div class="summary-row">
-                        <span>Annual Performance</span>
-                        <span class="badge excellent">Excellent</span>
+                        <span>Performance</span>
+                        <span class="badge excellent">{{summary.performance}}%</span>
                     </div>
 
                     <div class="summary-row">
-                        <span>Target Completion</span>
-                        <span class="badge good">94.8%</span>
+                        <span>Annual Achievement</span>
+                        <span class="badge good">{{annual.achievement}}%</span>
                     </div>
 
                     <div class="summary-row">
-                        <span>Sales Trend</span>
-                        <span class="badge excellent">Improving</span>
-                    </div>
-
-                    <div class="summary-row">
-                        <span>Attention Required</span>
-                        <span class="badge warning">Quarter 2</span>
+                        <span>Target Status</span>
+                        <span class="badge warning">
+                            {{summary.target_status.status}}
+                            by
+                            {{summary.target_status.amount | format_number}}
+                        </span>
                     </div>
 
                 </div>
@@ -644,18 +643,20 @@
 
                 <div class="summary-right">
 
-                    <ul>
+                    <div class="summary-row">
+                        <span>Average Monthly Sale</span>
+                        <span class="badge excellent">{{summary.average_monthly_sales | format_number}}</span>
+                    </div>
 
-                        <li>Highest Sales Month : March</li>
+                    <div class="summary-row">
+                        <span>Highest Performing Month</span>
+                        <span class="badge excellent">{{summary.highest_month.month}}</span>
+                    </div>
 
-                        <li>Lowest Sales Month : April</li>
-
-                        <li>Best Quarter : Q3</li>
-
-                        <li>Annual Achievement : 94.8%</li>
-
-                    </ul>
-
+                    <div class="summary-row">
+                        <span>Lowest Performing Month</span>
+                        <span class="badge warning">{{summary.lowest_month.month}}</span>
+                    </div>
                 </div>
 
             </div>
@@ -664,8 +665,7 @@
 
                 <strong>Recommendation :</strong>
 
-                Improve sales conversion during Quarter 2 while maintaining the strong
-                performance achieved during Quarter 3.
+                
 
             </div>
 
@@ -694,7 +694,7 @@
                 </div> -->
 
                 <div class="footer-center">
-                    <strong>Generated On :</strong> 10-Jul-2026
+                    <strong>Generated On :</strong> {{generated_on}}
                 </div>
 
                 <div class="footer-right">
@@ -730,18 +730,18 @@
                 label: 'Monthly Sales',
 
                 data: [
-                    210,
-                    235,
-                    250,
-                    245,
-                    270,
-                    290,
-                    310,
-                    300,
-                    325,
-                    340,
-                    360,
-                    390
+                    {{months.April.sales}},
+                    {{months.May.sales}},
+                    {{months.June.sales}},
+                    {{months.July.sales}},
+                    {{months.August.sales}},
+                    {{months.September.sales}},
+                    {{months.October.sales}},
+                    {{months.November.sales}},
+                    {{months.December.sales}},
+                    {{months.January.sales}},
+                    {{months.February.sales}},
+                    {{months.March.sales}}
                 ],
 
                 borderColor: '#1f4e79',
@@ -821,7 +821,12 @@
 
                     label: 'Target',
 
-                    data: [790, 810, 850, 700],
+                    data: [
+                        {{quarters.Q1.target}},
+                        {{quarters.Q2.target}},
+                        {{quarters.Q3.target}},
+                        {{quarters.Q4.target}}
+                    ],
 
                     backgroundColor: '#1f4e79'
 
@@ -831,7 +836,12 @@
 
                     label: 'Sales',
 
-                    data: [725, 760, 830, 690],
+                    data: [
+                        {{quarters.Q1.sales}},
+                        {{quarters.Q2.sales}},
+                        {{quarters.Q3.sales}},
+                        {{quarters.Q4.sales}}
+                    ],
 
                     backgroundColor: '#6fa8dc'
 
