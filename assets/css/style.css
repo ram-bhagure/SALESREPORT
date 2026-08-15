@@ -324,7 +324,7 @@ body {
 
 .annual-card{
 
-    width:325px;
+    width:310px;
 
     padding:14px;
 
@@ -714,6 +714,7 @@ body {
         border:none;
         border-radius: 10px;
         overflow: hidden;
+        zoom: 0.70
     }
 
 }

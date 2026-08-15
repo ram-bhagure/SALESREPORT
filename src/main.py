@@ -1,6 +1,6 @@
 from pathlib import Path
 import re
-
+from pdf_generator import html_to_pdf
 from excel_reader import load_excel
 from report_data import (get_distributor_data, get_completed_months, calculate_performance)
 from template_render import render_template
@@ -97,3 +97,19 @@ for distributor_name in distributors:
         f"Generated: {executive_name} / {safe_name}.html"
     )
 
+    # Generate PDF
+    pdf_path = (
+        executive_folder
+        /f"{safe_name}.pdf"
+    )
+    html_to_pdf(
+        output_path,
+        pdf_path
+    )
+
+
+
+# html_to_pdf(
+#     BASE_DIR / "output" / "Venkat" / "ADITYA AGENCIES.html",
+#     BASE_DIR / "output" / "Venkat" / "ADITYA AGENCIES.pdf"
+# )
